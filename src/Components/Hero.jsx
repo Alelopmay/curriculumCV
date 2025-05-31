@@ -1,22 +1,14 @@
 import React from 'react';
 import Particles from 'react-tsparticles';
-import { loadFull } from 'tsparticles';
+import { loadSlim } from 'tsparticles-slim';
 import Wavify from 'react-wavify';
 import { motion } from 'framer-motion';
 import { FaReact, FaAngular, FaLaravel } from 'react-icons/fa';
 import { SiSpringboot } from 'react-icons/si';
 
-const spherePositions = [
-    { top: '10%', left: '5%' },
-    { top: '20%', right: '10%' },
-    { bottom: '15%', left: '15%' },
-    { bottom: '20%', right: '5%' },
-    { top: '35%', left: '50%' },
-];
-
 const Hero = () => {
-    const particlesInit = async (main) => {
-        await loadFull(main);
+    const particlesInit = async (engine) => {
+        await loadSlim(engine); // carga slim para evitar errores
     };
 
     return (
@@ -28,7 +20,7 @@ const Hero = () => {
                 overflow: 'hidden',
             }}
         >
-            {/* Particles background */}
+            {/* Partículas de fondo */}
             <Particles
                 id="tsparticles"
                 init={particlesInit}
@@ -85,48 +77,7 @@ const Hero = () => {
                 }}
             />
 
-            {/* Floating spheres (desktop only) */}
-            {spherePositions.map((pos, i) => (
-                <motion.div
-                    key={i}
-                    className="d-none d-md-block" // Only visible on desktop
-                    initial={{ scale: 0.9, opacity: 0 }}
-                    animate={{ scale: [0.9, 1.05, 1], opacity: 0.8 }}
-                    transition={{
-                        duration: 2 + i * 0.2,
-                        repeat: Infinity,
-                        repeatType: 'mirror',
-                    }}
-                    style={{
-                        width: 80,
-                        height: 80,
-                        borderRadius: '50%',
-                        border: '2px solid #a1c6ea',
-                        background: 'rgba(161, 198, 234, 0.05)',
-                        boxShadow: '0 0 20px rgba(161, 198, 234, 0.4)',
-                        position: 'absolute',
-                        zIndex: 1,
-                        ...pos,
-                        display: 'flex',
-                        alignItems: 'center',
-                        justifyContent: 'center',
-                    }}
-                >
-                    <motion.div
-                        animate={{ rotate: 360 }}
-                        transition={{ repeat: Infinity, duration: 6, ease: 'linear' }}
-                        style={{
-                            width: 6,
-                            height: 6,
-                            borderRadius: '50%',
-                            background: '#a1c6ea',
-                            boxShadow: '0 0 10px #a1c6ea',
-                        }}
-                    />
-                </motion.div>
-            ))}
-
-            {/* Wave at the bottom */}
+            {/* Onda inferior */}
             <Wavify
                 fill="#a1c6ea"
                 paused={false}
@@ -142,7 +93,7 @@ const Hero = () => {
                 }}
             />
 
-            {/* Main content */}
+            {/* Contenido principal */}
             <div
                 className="container text-center position-relative d-flex flex-column align-items-center"
                 style={{ zIndex: 2, maxWidth: '700px' }}
@@ -160,12 +111,15 @@ const Hero = () => {
                     }}
                 >
                     <img
-                        src="/assets/photo/foto.jpeg"
+                        src="src/assets/photo/foto.jpeg"
                         alt="Foto de Alejandro López Maya"
                         className="img-fluid rounded-circle"
-                        style={{ width: '100%', height: 'auto', objectFit: 'cover' }}
+                        style={{
+                            width: '100%',
+                            height: 'auto',
+                            objectFit: 'cover',
+                        }}
                     />
-
                 </motion.div>
 
                 <motion.h1
@@ -192,64 +146,34 @@ const Hero = () => {
                     Habilidad en frameworks como Angular, Spring Boot, React y Laravel.
                 </motion.p>
 
-                {/* Tech stack badges */}
+                {/* Tecnologías */}
                 <motion.div
                     initial={{ opacity: 0, y: 30 }}
                     animate={{ opacity: 1, y: 0 }}
                     transition={{ delay: 1.5, duration: 1 }}
                     className="d-flex justify-content-center flex-wrap gap-3 mt-3"
                 >
-                    <div className="d-flex align-items-center gap-2 px-3 py-2 rounded-pill"
-                        style={{
-                            backgroundColor: '#61dafb',
-                            color: '#20232a',
-                            fontWeight: '500',
-                            transition: 'transform 0.2s',
-                        }}
-                        onMouseEnter={e => e.currentTarget.style.transform = 'scale(1.05)'}
-                        onMouseLeave={e => e.currentTarget.style.transform = 'scale(1)'}
-                    >
-                        <FaReact size={20} /> React
-                    </div>
-
-                    <div className="d-flex align-items-center gap-2 px-3 py-2 rounded-pill"
-                        style={{
-                            backgroundColor: '#dd0031',
-                            color: '#ffffff',
-                            fontWeight: '500',
-                            transition: 'transform 0.2s',
-                        }}
-                        onMouseEnter={e => e.currentTarget.style.transform = 'scale(1.05)'}
-                        onMouseLeave={e => e.currentTarget.style.transform = 'scale(1)'}
-                    >
-                        <FaAngular size={20} /> Angular
-                    </div>
-
-                    <div className="d-flex align-items-center gap-2 px-3 py-2 rounded-pill"
-                        style={{
-                            backgroundColor: '#6db33f',
-                            color: '#ffffff',
-                            fontWeight: '500',
-                            transition: 'transform 0.2s',
-                        }}
-                        onMouseEnter={e => e.currentTarget.style.transform = 'scale(1.05)'}
-                        onMouseLeave={e => e.currentTarget.style.transform = 'scale(1)'}
-                    >
-                        <SiSpringboot size={20} /> Spring Boot
-                    </div>
-
-                    <div className="d-flex align-items-center gap-2 px-3 py-2 rounded-pill"
-                        style={{
-                            backgroundColor: '#ff2d20',
-                            color: '#ffffff',
-                            fontWeight: '500',
-                            transition: 'transform 0.2s',
-                        }}
-                        onMouseEnter={e => e.currentTarget.style.transform = 'scale(1.05)'}
-                        onMouseLeave={e => e.currentTarget.style.transform = 'scale(1)'}
-                    >
-                        <FaLaravel size={20} /> Laravel
-                    </div>
+                    {[
+                        { icon: <FaReact size={20} />, name: 'React', bg: '#61dafb', color: '#20232a' },
+                        { icon: <FaAngular size={20} />, name: 'Angular', bg: '#dd0031', color: '#fff' },
+                        { icon: <SiSpringboot size={20} />, name: 'Spring Boot', bg: '#6db33f', color: '#fff' },
+                        { icon: <FaLaravel size={20} />, name: 'Laravel', bg: '#ff2d20', color: '#fff' },
+                    ].map((tech, i) => (
+                        <div
+                            key={i}
+                            className="d-flex align-items-center gap-2 px-3 py-2 rounded-pill"
+                            style={{
+                                backgroundColor: tech.bg,
+                                color: tech.color,
+                                fontWeight: '500',
+                                transition: 'transform 0.2s',
+                            }}
+                            onMouseEnter={(e) => e.currentTarget.style.transform = 'scale(1.05)'}
+                            onMouseLeave={(e) => e.currentTarget.style.transform = 'scale(1)'}
+                        >
+                            {tech.icon} {tech.name}
+                        </div>
+                    ))}
                 </motion.div>
             </div>
         </section>
@@ -257,3 +181,4 @@ const Hero = () => {
 };
 
 export default Hero;
+
