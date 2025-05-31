@@ -19,7 +19,6 @@ const categoryIcons = {
     "Mantenimiento de equipos y redes": <FaNetworkWired size={32} color="#3b82f6" />,
 };
 
-// ✨ Animación ajustada para que las tarjetas aparezcan desde arriba hacia abajo
 const fadeInKeyframes = `
 @keyframes fadeInSlide {
   0% {
@@ -97,7 +96,8 @@ const Skills = () => {
     ];
 
     useEffect(() => {
-        setTimeout(() => setLoaded(true), 100);
+        const timer = setTimeout(() => setLoaded(true), 100);
+        return () => clearTimeout(timer);
     }, []);
 
     const colors = {
@@ -155,7 +155,7 @@ const Skills = () => {
                                 role="region"
                                 aria-labelledby={`category-${index}`}
                                 style={{
-                                    flex: "1 1 300px",
+                                    flex: "1 1 320px",
                                     backgroundColor: colors.cardBackground,
                                     borderRadius: 18,
                                     padding: "2rem 1.75rem",
@@ -171,16 +171,21 @@ const Skills = () => {
                                     transform: loaded ? "translateY(0)" : "translateY(-20px)",
                                     transition: "transform 0.3s ease, box-shadow 0.3s ease",
                                     outline: "none",
+                                    minWidth: 320,
+                                    maxWidth: 350,
+                                    boxSizing: "border-box",
                                 }}
                                 onFocus={(e) => {
                                     e.currentTarget.style.transform = "scale(1.06)";
                                     e.currentTarget.style.boxShadow =
                                         "0 10px 30px rgba(59, 130, 246, 0.4)";
+                                    e.currentTarget.style.outline = `2px solid ${colors.primary}`;
                                 }}
                                 onBlur={(e) => {
                                     e.currentTarget.style.transform = "translateY(0)";
                                     e.currentTarget.style.boxShadow =
                                         "0 4px 12px rgba(59, 130, 246, 0.15)";
+                                    e.currentTarget.style.outline = "none";
                                 }}
                                 onMouseEnter={(e) => {
                                     e.currentTarget.style.transform = "scale(1.06)";

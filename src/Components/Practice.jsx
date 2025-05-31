@@ -12,29 +12,36 @@ const Practice = () => {
         transform: translateY(0);
       }
     }
-    
-    @keyframes zoomInShadow {
-      from {
-        transform: scale(1);
-        box-shadow: 0 4px 12px rgba(0, 255, 195, 0.15);
-      }
-      to {
-        transform: scale(1.05);
-        box-shadow: 0 8px 20px rgba(0, 255, 195, 0.35);
-      }
-    }
   `;
 
     const containerStyle = {
-        background: 'linear-gradient(135deg, #1f2937 0%, #374151 100%)',
+        background: 'linear-gradient(135deg, #1f2937, #374151)',
         color: '#f0f4f8',
         padding: '3rem 1rem',
         minHeight: '100vh',
+        fontFamily: "'Segoe UI', Tahoma, Geneva, Verdana, sans-serif",
+        position: 'relative',
+        overflow: 'hidden',
     };
+
+    const waveTop = (
+        <div style={{ position: 'absolute', top: 0, left: 0, width: '100%', zIndex: 1, lineHeight: 0 }}>
+            <svg viewBox="0 0 1200 120" preserveAspectRatio="none" style={{ display: 'block', width: '100%', height: 80 }}>
+                <path
+                    d="M0,0V46.29c47.76,22,103.78,29.13,158,17.17C230.4,51.79,284,14.58,339,6.15S458.4,17.94,514,33.29
+            c55.6,15.35,112.64,34.47,173,26.64,60.36-7.83,113.78-43.53,170-59.8,
+            56.22-16.27,117.92-12.15,172,6.77V0Z"
+                    fill="#1f2937"
+                />
+            </svg>
+        </div>
+    );
 
     const sectionStyle = {
         maxWidth: 900,
         margin: '0 auto',
+        position: 'relative',
+        zIndex: 2,
     };
 
     const headerStyle = {
@@ -42,7 +49,7 @@ const Practice = () => {
         paddingBottom: '0.75rem',
         marginBottom: '2rem',
         fontWeight: '700',
-        fontSize: '1.8rem',
+        fontSize: '2.2rem',
         color: '#a1c6ea',
         textAlign: 'center',
     };
@@ -50,8 +57,8 @@ const Practice = () => {
     const cardBaseStyle = {
         backgroundColor: 'rgba(10, 25, 47, 0.7)',
         border: '1px solid rgba(161, 198, 234, 0.3)',
-        borderRadius: 8,
-        padding: '1.5rem',
+        borderRadius: 12,
+        padding: '1.8rem',
         marginBottom: '2.5rem',
         opacity: 0,
         transform: 'translateY(20px)',
@@ -70,23 +77,18 @@ const Practice = () => {
     };
 
     const paragraphStyle = {
-        color: 'rgba(240, 244, 248, 0.7)',
+        color: 'rgba(240, 244, 248, 0.75)',
         marginBottom: '1.25rem',
-        lineHeight: 1.5,
+        lineHeight: 1.6,
         fontSize: '1rem',
     };
 
     const timeStyle = {
-        color: 'rgba(240, 244, 248, 0.7)',
+        color: '#cbd5e1',
         fontStyle: 'italic',
         fontSize: '0.9rem',
         display: 'block',
     };
-
-    const animationDelays = ['0.2s', '0.4s', '0.6s'];
-
-    // Para hover con inline styles en React tenemos que usar estado,
-    // así que vamos a usar un componente interno para la tarjeta que maneje el hover
 
     const ExperienceCard = ({ title, role, description, date, dateTime, delay }) => {
         const [hovered, setHovered] = React.useState(false);
@@ -103,7 +105,6 @@ const Practice = () => {
                         ? {
                             transform: 'scale(1.05)',
                             boxShadow: '0 8px 20px rgba(0, 255, 195, 0.35)',
-                            transition: 'transform 0.3s ease, box-shadow 0.3s ease',
                         }
                         : {}),
                 }}
@@ -124,6 +125,7 @@ const Practice = () => {
         <>
             <style>{fadeInKeyframes}</style>
             <div style={containerStyle} id="experience">
+                {waveTop}
                 <section style={sectionStyle}>
                     <h2 style={headerStyle}>Experiencia Laboral en Prácticas</h2>
 

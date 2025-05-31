@@ -1,4 +1,4 @@
-import React, { useState } from "react";
+import React, { useState, useEffect } from "react";
 import {
     FaLaptopCode,
     FaClock,
@@ -10,6 +10,7 @@ import {
     FaHeadphonesAlt,
     FaGithub,
     FaVideo,
+    FaTimes,
 } from "react-icons/fa";
 
 const projectsData = [
@@ -125,6 +126,15 @@ musical, integrando búsqueda de canciones, listas personalizadas y control de a
 const Projects = () => {
     const [expandedId, setExpandedId] = useState(null);
 
+    // Cierra el modal con ESC
+    useEffect(() => {
+        const handleEsc = (e) => {
+            if (e.key === "Escape") setExpandedId(null);
+        };
+        window.addEventListener("keydown", handleEsc);
+        return () => window.removeEventListener("keydown", handleEsc);
+    }, []);
+
     const toggleDetails = (id) => {
         setExpandedId((current) => (current === id ? null : id));
     };
@@ -141,94 +151,224 @@ const Projects = () => {
             id="projects"
             className="py-5"
             style={{
-                background: 'linear-gradient(135deg, #0f172a 0%, #1e293b 100%)',
-                color: '#ffffff',
+                background: "linear-gradient(135deg, #0f172a 0%, #1e293b 100%)",
+                color: "#ffffff",
+                minHeight: "100vh",
             }}
         >
             <div className="container">
-                <h2 className="mb-4 d-flex align-items-center text-white">
+                <h2
+                    className="mb-4 d-flex align-items-center text-white"
+                    style={{ fontSize: "2.4rem" }}
+                >
                     <FaLaptopCode className="me-2 text-info" />
                     Proyectos
                 </h2>
-                <div className="row g-4">
-                    {projectsData.map(({ id, icon, title, image, description, links }) => {
-                        const isExpanded = expandedId === id;
-                        return (
-                            <div key={id} className="col-md-6">
-                                <div
-                                    className={`card h-100 shadow-lg text-white ${isExpanded ? 'border border-info' : ''
-                                        }`}
-                                    role="button"
-                                    tabIndex={0}
-                                    onClick={() => toggleDetails(id)}
-                                    onKeyDown={(e) => handleKeyDown(e, id)}
-                                    aria-expanded={isExpanded}
-                                    aria-controls={`project-details-${id}`}
-                                    style={{
-                                        cursor: 'pointer',
-                                        transition: 'transform 0.3s ease',
-                                        background: 'linear-gradient(145deg, #334155, #1e293b)',
-                                        borderRadius: '12px',
-                                    }}
-                                    onMouseEnter={(e) => {
-                                        if (!isExpanded) e.currentTarget.style.transform = 'scale(1.03)';
-                                    }}
-                                    onMouseLeave={(e) => {
-                                        if (!isExpanded) e.currentTarget.style.transform = 'scale(1)';
-                                    }}
-                                >
-                                    <div className="card-header d-flex align-items-center bg-dark text-info">
-                                        <span className="fs-4 me-3">{icon}</span>
-                                        <h5 className="mb-0">{title}</h5>
-                                    </div>
-                                    <div
-                                        id={`project-details-${id}`}
-                                        className="collapse"
-                                        style={{
-                                            display: isExpanded ? 'block' : 'none',
-                                            transition: 'all 0.3s ease',
-                                        }}
-                                    >
-                                        <div className="card-body">
-                                            <img
-                                                src={image}
-                                                alt={`Imagen del proyecto ${title}`}
-                                                className="img-fluid rounded mb-3"
-                                                style={{
-                                                    maxHeight: 200,
-                                                    objectFit: 'cover',
-                                                    width: '100%',
-                                                    border: '2px solid #0ea5e9',
-                                                }}
-                                                loading="lazy"
-                                            />
-                                            <p style={{ whiteSpace: 'pre-line' }}>{description}</p>
-                                            <div className="d-flex flex-wrap gap-2 mt-3">
-                                                {links.map(({ href, label, isVideo }, i) => (
-                                                    <a
-                                                        key={i}
-                                                        href={href}
-                                                        target="_blank"
-                                                        rel="noopener noreferrer"
-                                                        className={`btn ${isVideo ? 'btn-danger' : 'btn-info'
-                                                            } d-flex align-items-center`}
-                                                        style={{ gap: 6 }}
-                                                    >
-                                                        {isVideo ? <FaVideo /> : <FaGithub />}
-                                                        {label}
-                                                    </a>
-                                                ))}
-                                            </div>
-                                        </div>
-                                    </div>
-                                </div>
-                            </div>
-                        );
-                    })}
+                <div
+                    className="projects-grid"
+                    style={{
+                        display: "grid",
+                        gridTemplateColumns: "repeat(auto-fit, minmax(320px, 1fr))",
+                        gap: "2rem",
+                    }}
+                >
+                    {projectsData.map(({ id, icon, title }) => (
+                        <div
+                            key={id}
+                            role="button"
+                            tabIndex={0}
+                            aria-expanded={expandedId === id}
+                            onClick={() => toggleDetails(id)}
+                            onKeyDown={(e) => handleKeyDown(e, id)}
+                            style={{
+                                background:
+                                    "linear-gradient(145deg, #334155, #1e293b)",
+                                borderRadius: "12px",
+                                boxShadow:
+                                    "0 6px 18px rgba(14, 165, 233, 0.3)",
+                                color: "#f0f9ff",
+                                cursor: "pointer",
+                                display: "flex",
+                                alignItems: "center",
+                                justifyContent: "center",
+                                fontSize: "1.3rem",
+                                padding: "1.5rem",
+                                fontWeight: "600",
+                                userSelect: "none",
+                                transition: "transform 0.2s ease",
+                            }}
+                            onMouseEnter={(e) => {
+                                if (expandedId !== id) e.currentTarget.style.transform = "scale(1.05)";
+                            }}
+                            onMouseLeave={(e) => {
+                                if (expandedId !== id) e.currentTarget.style.transform = "scale(1)";
+                            }}
+                        >
+                            <span style={{ fontSize: "2.2rem", marginRight: "12px", color: "#0ea5e9" }}>
+                                {icon}
+                            </span>
+                            {title}
+                        </div>
+                    ))}
                 </div>
             </div>
+
+            {/* Ventana modal emergente */}
+            {expandedId !== null && (
+                <Modal
+                    project={projectsData.find((p) => p.id === expandedId)}
+                    onClose={() => setExpandedId(null)}
+                />
+            )}
         </section>
-    
+    );
+};
+
+const Modal = ({ project, onClose }) => {
+    if (!project) return null;
+
+    return (
+        <>
+            {/* Fondo oscuro */}
+            <div
+                onClick={onClose}
+                style={{
+                    position: "fixed",
+                    inset: 0,
+                    backgroundColor: "rgba(0,0,0,0.7)",
+                    zIndex: 1000,
+                    cursor: "pointer",
+                }}
+                aria-hidden="true"
+            />
+            {/* Ventana modal */}
+            <div
+                role="dialog"
+                aria-modal="true"
+                aria-labelledby={`modal-title-${project.id}`}
+                tabIndex={-1}
+                style={{
+                    position: "fixed",
+                    top: "50%",
+                    left: "50%",
+                    transform: "translate(-50%, -50%)",
+                    background:
+                        "linear-gradient(145deg, #334155, #1e293b)",
+                    borderRadius: "15px",
+                    boxShadow: "0 0 20px rgba(14, 165, 233, 0.8)",
+                    color: "#f0f9ff",
+                    maxWidth: "720px",
+                    width: "90vw",
+                    maxHeight: "85vh",
+                    overflowY: "auto",
+                    padding: "1.5rem 2rem",
+                    zIndex: 1001,
+                    display: "flex",
+                    flexDirection: "column",
+                }}
+            >
+                <header
+                    id={`modal-title-${project.id}`}
+                    style={{
+                        fontSize: "2rem",
+                        fontWeight: "700",
+                        color: "#0ea5e9",
+                        marginBottom: "1rem",
+                        display: "flex",
+                        alignItems: "center",
+                        justifyContent: "space-between",
+                    }}
+                >
+                    <div style={{ display: "flex", alignItems: "center", gap: "12px" }}>
+                        <span style={{ fontSize: "2.5rem" }}>{project.icon}</span>
+                        {project.title}
+                    </div>
+                    <button
+                        onClick={onClose}
+                        aria-label="Cerrar ventana de proyecto"
+                        style={{
+                            background: "transparent",
+                            border: "none",
+                            color: "#0ea5e9",
+                            fontSize: "1.8rem",
+                            cursor: "pointer",
+                            lineHeight: 1,
+                            padding: 0,
+                            userSelect: "none",
+                        }}
+                    >
+                        <FaTimes />
+                    </button>
+                </header>
+
+                <img
+                    src={project.image}
+                    alt={`Imagen del proyecto ${project.title}`}
+                    style={{
+                        width: "100%",
+                        maxHeight: "280px",
+                        objectFit: "cover",
+                        borderRadius: "12px",
+                        border: "2px solid #0ea5e9",
+                        marginBottom: "1rem",
+                    }}
+                    loading="lazy"
+                />
+
+                <p
+                    style={{
+                        whiteSpace: "pre-line",
+                        fontSize: "1.1rem",
+                        lineHeight: "1.5",
+                        marginBottom: "1rem",
+                        color: "#e0e7ff",
+                    }}
+                >
+                    {project.description}
+                </p>
+
+                <div
+                    style={{
+                        display: "flex",
+                        flexWrap: "wrap",
+                        gap: "0.75rem",
+                        fontSize: "1rem",
+                        justifyContent: "flex-start",
+                    }}
+                >
+                    {project.links.map(({ href, label, isVideo }, i) => (
+                        <a
+                            key={i}
+                            href={href}
+                            target="_blank"
+                            rel="noopener noreferrer"
+                            className={`btn ${isVideo ? "btn-danger" : "btn-info"} d-flex align-items-center`}
+                            style={{
+                                gap: 6,
+                                fontWeight: "600",
+                                padding: "0.4rem 0.75rem",
+                                borderRadius: "6px",
+                                textDecoration: "none",
+                                color: "white",
+                                backgroundColor: isVideo ? "#dc2626" : "#0ea5e9",
+                                display: "inline-flex",
+                                alignItems: "center",
+                                transition: "background-color 0.3s ease",
+                            }}
+                            onMouseEnter={(e) => {
+                                e.currentTarget.style.backgroundColor = isVideo ? "#b91c1c" : "#0284c7";
+                            }}
+                            onMouseLeave={(e) => {
+                                e.currentTarget.style.backgroundColor = isVideo ? "#dc2626" : "#0ea5e9";
+                            }}
+                        >
+                            {isVideo ? <FaVideo /> : <FaGithub />}
+                            <span style={{ marginLeft: "6px" }}>{label}</span>
+                        </a>
+                    ))}
+                </div>
+            </div>
+        </>
     );
 };
 
