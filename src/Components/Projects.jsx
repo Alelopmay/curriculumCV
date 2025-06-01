@@ -18,7 +18,7 @@ const projectsData = [
         id: 1,
         icon: <FaClock />,
         title: "TimeFlow",
-        image: "src/assets/photo/timeFlow.png",
+        image: "/photo/timeFlow.png",
         description: `TimeFlow es un sistema de fichajes (control horario) desarrollado con Angular y Spring Boot.
 Está diseñado para registrar entradas, salidas, descansos y ausencias de empleados. Permite asignar y
 modificar horarios, justificar faltas, consultar historiales laborales y controlar vacaciones. Los empleados pueden
@@ -32,7 +32,7 @@ ver su agenda personalizada en tiempo real.`,
         id: 2,
         icon: <FaCogs />,
         title: "EquipFix",
-        image: "src/assets/photo/equipFix.png",
+        image: "/photo/equipFix.png",
         description: `EquipFix es una solución empresarial desarrollada en React y Spring Boot para la gestión del
 mantenimiento de equipos industriales. Permite registrar fallas, asignar técnicos y realizar seguimiento al estado de reparación.`,
         links: [
@@ -49,7 +49,7 @@ mantenimiento de equipos industriales. Permite registrar fallas, asignar técnic
         id: 3,
         icon: <FaTools />,
         title: "Protaller",
-        image: "src/assets/photo/prototaller.png",
+        image: "/photo/prototaller.png",
         description: `Protaller es una aplicación diseñada para la gestión integral de talleres mecánicos, incluyendo
 control de inventarios, programación de citas, gestión de clientes y generación de reportes en
 tiempo real.`,
@@ -67,7 +67,7 @@ tiempo real.`,
         id: 4,
         icon: <FaChalkboardTeacher />,
         title: "TutorialHub",
-        image: "src/assets/photo/tutorial.png",
+        image: "/photo/tutorial.png",
         description: `TutorialHub es una plataforma educativa que permite a estudiantes encontrar y contactar
 profesores particulares. Incluye programación de clases, pagos y seguimiento de progreso
 académico.`,
@@ -85,7 +85,7 @@ académico.`,
         id: 5,
         icon: <FaClinicMedical />,
         title: "ClínicaPro",
-        image: "src/assets/photo/clinica.png",
+        image: "/photo/clinica.png",
         description: `ClínicaPro es una innovadora plataforma para clínicas de fisioterapia, que ofrece agendamiento
 inteligente de citas, historial clínico digital, reportes terapéuticos y comunicación con los
 pacientes.`,
@@ -98,7 +98,7 @@ pacientes.`,
         id: 6,
         icon: <FaSwimmer />,
         title: "SwimTrack",
-        image: "src/assets/photo/sim.png",
+        image: "/photo/sim.png",
         description: `SwimTrack es una aplicación para monitores de natación que permite registrar sesiones de
 entrenamiento, controlar el progreso de nadadores y generar estadísticas de rendimiento a lo
 largo del tiempo. Incluye funciones de gestión de usuarios, sesiones y estadísticas. Este proyecto está realizado en Ionic.`,
@@ -114,7 +114,7 @@ largo del tiempo. Incluye funciones de gestión de usuarios, sesiones y estadís
         id: 7,
         icon: <FaHeadphonesAlt />,
         title: "Spotyfy",
-        image: "src/assets/photo/spoty.png",
+        image: "/photo/spoty.png",
         description: `Spotyfy es una aplicación educativa diseñada para explorar las funcionalidades de reproducción
 musical, integrando búsqueda de canciones, listas personalizadas y control de audio en tiempo real.`,
         links: [
