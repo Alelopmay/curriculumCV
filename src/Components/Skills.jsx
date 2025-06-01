@@ -39,61 +39,62 @@ const Skills = () => {
         {
             title: "Lenguajes de Programación",
             items: [
-                { alt: "HTML", src: "src/assets/photo/html.png" },
-                { alt: "CSS", src: "src/assets/photo/css.png" },
-                { alt: "JavaScript", src: "src/assets/photo/JavaScript.png" },
-                { alt: "Java", src: "src/assets/photo/java.png" },
-                { alt: "Python", src: "src/assets/photo/Python.png" },
-                { alt: "C", src: "src/assets/photo/c.png" },
-                { alt: "SQL", src: "src/assets/photo/sql.png" },
-                { alt: "PHP", src: "src/assets/photo/php.png" },
+                { alt: "HTML", src: "/photo/html.png" },
+                { alt: "CSS", src: "/photo/css.png" },
+                { alt: "JavaScript", src: "/photo/JavaScript.png" },
+                { alt: "Java", src: "/photo/java.png" },
+                { alt: "Python", src: "/photo/Python.png" },
+                { alt: "C", src: "/photo/c.png" },
+                { alt: "SQL", src: "/photo/sql.png" },
+                { alt: "PHP", src: "/photo/php.png" },
             ],
         },
         {
             title: "Entornos de Desarrollo",
             items: [
-                { alt: "VS Code", src: "src/assets/photo/vscode.png" },
-                { alt: "IntelliJ", src: "src/assets/photo/intellij.png" },
-                { alt: "Android Studio", src: "src/assets/photo/androidstudio.png" },
-                { alt: "Eclipse", src: "src/assets/photo/eclipse.png" },
+                { alt: "VS Code", src: "/photo/vscode.png" },
+                { alt: "IntelliJ", src: "/photo/intellij.png" },
+                { alt: "Android Studio", src: "/photo/androidstudio.png" },
+                { alt: "Eclipse", src: "/photo/eclipse.png" },
             ],
         },
         {
             title: "Frameworks",
             items: [
-                { alt: "Angular", src: "src/assets/photo/angular.png" },
-                { alt: "Ionic", src: "src/assets/photo/ionic.png" },
-                { alt: "Spring Boot", src: "src/assets/photo/sprinboot.png" },
-                { alt: "Laravel", src: "src/assets/photo/laravel.png" },
-                { alt: "React", src: "src/assets/photo/react.png" },
+                { alt: "Angular", src: "/photo/angular.png" },
+                { alt: "Ionic", src: "/photo/ionic.png" },
+                { alt: "Spring Boot", src: "/photo/sprinboot.png" },
+                { alt: "Laravel", src: "/photo/laravel.png" },
+                { alt: "React", src: "/photo/react.png" },
             ],
         },
         {
             title: "Sistemas Operativos",
             items: [
-                { alt: "Linux", src: "src/assets/photo/fedora.png" },
-                { alt: "Windows", src: "src/assets/photo/win.png" },
-                { alt: "Ubuntu", src: "src/assets/photo/ubuntud.png" },
+                { alt: "Linux", src: "/photo/fedora.png" },
+                { alt: "Windows", src: "/photo/win.png" },
+                { alt: "Ubuntu", src: "/photo/ubuntud.png" },
             ],
         },
         {
             title: "Otras Herramientas",
             items: [
-                { alt: "WordPress", src: "src/assets/photo/word.png" },
-                { alt: "GitHub", src: "src/assets/photo/git.png" },
-                { alt: "Photoshop", src: "src/assets/photo/adobe.png" },
-                { alt: "Premiere", src: "src/assets/photo/premier.png" },
+                { alt: "WordPress", src: "/photo/word.png" },
+                { alt: "GitHub", src: "/photo/git.png" },
+                { alt: "Photoshop", src: "/photo/adobe.png" },
+                { alt: "Premiere", src: "/photo/premier.png" },
             ],
         },
         {
             title: "Tecnologías Microsoft",
             items: [
-                { alt: "SharePoint", src: "src/assets/photo/sharepoint.png" },
-                { alt: "Power Automate", src: "src/assets/photo/powerautomate.png" },
-                { alt: "Power Apps", src: "src/assets/photo/powerapps.png" },
+                { alt: "SharePoint", src: "/photo/sharepoint.png" },
+                { alt: "Power Automate", src: "/photo/powerautomate.png" },
+                { alt: "Power Apps", src: "/photo/powerapps.png" },
             ],
         },
     ];
+    
 
     useEffect(() => {
         const timer = setTimeout(() => setLoaded(true), 100);
