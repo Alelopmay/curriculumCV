@@ -143,7 +143,7 @@ const Hero = () => {
                     className="lead text-light"
                 >
                     Programador Full Stack de aplicaciones web y multiplataforma.<br />
-                    Habilidad en frameworks como Angular, Spring Boot, React y Laravel.
+                    
                 </motion.p>
 
                 {/* Tecnologías */}

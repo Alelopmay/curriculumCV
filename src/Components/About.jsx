@@ -105,7 +105,7 @@ const About = () => {
                             <FaIdCard className="me-2" /> Datos Personales
                         </h4>
                         <ul className="list-unstyled">
-                            <li><FaUser /><strong>Nombre:</strong> Alejandro López Maya</li>
+                           
                             <li><FaEnvelope /><strong>Email:</strong> <a href="mailto:alelopmay@gmail.com" className="link-accent">alelopmay@gmail.com</a></li>
                             <li><FaPhoneAlt /><strong>Teléfono:</strong> 644 89 87 40</li>
                             <li><FaLinkedin /><strong>LinkedIn:</strong> <a href="https://www.linkedin.com/in/alejandro-lópez-maya-39a7b5263" target="_blank" rel="noreferrer" className="link-accent">Visitar perfil</a></li>

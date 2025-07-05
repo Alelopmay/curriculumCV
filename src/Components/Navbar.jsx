@@ -79,9 +79,10 @@ const Navbar = () => {
     const navItems = [
         { icon: <FaHome style={{ color: iconColor }} />, text: 'Inicio', href: '#home' },
         { icon: <FaUser style={{ color: iconColor }} />, text: 'Sobre mí', href: '#about' },
+        { icon: <FaProjectDiagram style={{ color: iconColor }} />, text: 'Proyectos', href: '#projects' },
         { icon: <FaFlask style={{ color: iconColor }} />, text: 'Trabajos', href: '#Trabajos' },
         { icon: <FaCode style={{ color: iconColor }} />, text: 'Habilidades', href: '#skills' },
-        { icon: <FaProjectDiagram style={{ color: iconColor }} />, text: 'Proyectos', href: '#projects' },
+     
     ];
 
     return (
