@@ -154,6 +154,18 @@ const Practice = () => {
                         delay="0.6s"
                     />
                 </section>
+                <section style={sectionStyle}>
+                    <h2 style={headerStyle}>Experiencia Laboral</h2>
+
+                    <ExperienceCard
+                        title="Automatismos Itea, S.L."
+                        role="Técnico en programación de scada y diseño de hmi "
+                        date="agosto 2025 - actualidad"
+                        dateTime="2022-03"
+                        delay="0.2s"
+                    />
+                    
+                </section>
             </div>
         </>
     );

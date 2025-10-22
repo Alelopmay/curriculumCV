@@ -111,7 +111,7 @@ const Hero = () => {
                     }}
                 >
                     <img
-                        src="/photo/foto.jpeg"
+                        src="/photo/fotopre.png"
                         alt="Foto de Alejandro López Maya"
                         className="img-fluid rounded-circle"
                         style={{
