@@ -11,6 +11,7 @@ import {
     FaGithub,
     FaVideo,
     FaTimes,
+    FaCar
 } from "react-icons/fa";
 
 const projectsData = [
@@ -119,6 +120,23 @@ largo del tiempo. Incluye funciones de gestión de usuarios, sesiones y estadís
 musical, integrando búsqueda de canciones, listas personalizadas y control de audio en tiempo real.`,
         links: [
             { href: "https://github.com/rafa30052003/proyectoSpoty", label: "GitHub (java fxml)" },
+        ],
+    },
+    {
+        id: 8,
+        icon: <FaCar />,
+        title: "CarReserve",
+        image: "/photo/reserve.png",
+        description: `CarReserve es una aplicación empresarial para la gestión y reserva de vehículos corporativos.
+            Permite a las empresas organizar el uso de su flota, gestionar las reservas y visualizar la disponibilidad de los coches en tiempo real. Desarrollada con React y Spring Boot.`,
+        links: [
+            {
+                href: "https://drive.google.com/file/d/1DrqsJ6Uumpq94oGnM5-fy7mioENAXROy/view?usp=sharing",
+                label: "Video",
+                isVideo: true,
+            },
+            { href: "https://github.com/Alelopmay/CarResve", label: "Frontend (React)" },
+            { href: "https://github.com/Alelopmay/carReservaDB-app", label: "Backend (Laravel)" },
         ],
     },
 ];
